@@ -1,0 +1,27 @@
+# lib/templates/lib/detail.html
+<h1>Book List</h1>
+<table>
+    <tr>
+        <td>??</td>
+        <td>??</td>
+        <td>???</td>
+        <td>????</td>
+    </tr>
+{% for book in book_list.all %}
+    <tr>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.pub_house }}</td>
+        <td>{{ book.pub_date }}</td>
+        <td><a href="{% url 'lib:delBook' book.id %}">del</a></td>
+    </tr>
+{% endfor %}
+</table>
+
+<form action="{% url 'lib:addBook' %}" method="post" name="addBook">
+    {% csrf_token %}
+    <p><span>name：</span><input type="text"  name="name"></p>
+    <p><span>adi:<span><input type="text"  name="author"></p>
+    <p><span>pub:<span><input type="text"  name="pub_house"></p>
+    <input type="submit" value="sub">
+</form>
